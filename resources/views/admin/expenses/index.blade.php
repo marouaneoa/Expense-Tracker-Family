@@ -32,7 +32,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td><a href="{{ route('admin.expenses.show', $expense) }}">{{ $expense->expense_category->name }}</a></td>
-                            <td>{{ $expense->expense_currency->symbol  . ' ' . number_format($expense->amount, 2, $expense->expense_currency->money_format_decimal, $expense->expense_currency->money_format_thousands) }}</td>
+                            <td>{{'DZD'  . ' ' .number_format($expense->amount, 0, ',') }}</td>
                             <td>{{ Carbon\Carbon::createFromFormat('Y-m-d', $expense->entry_date)->format('d, M Y') }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
