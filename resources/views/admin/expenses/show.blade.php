@@ -24,6 +24,10 @@
                         <th>Description</th>
                         <td>{{ $expense->description }}</td>
                     </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td>{{ $expense->amount }}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
