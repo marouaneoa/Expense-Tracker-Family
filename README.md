@@ -1,7 +1,5 @@
 # Expense Tracker Family Challenge
 
-
-
 ## Run Locally
 
 Clone the project
