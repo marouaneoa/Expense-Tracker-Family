@@ -21,7 +21,8 @@
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Category Name</th>
+                        <th>Description</th>
+                        <th>Category</th>
                         <th>Amount</th>
                         <th>Date</th>
                         <th class="text-center" style="width: 30px;">Action</th>
@@ -31,8 +32,10 @@
                     @forelse($expenses as $expense)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><a href="{{ route('admin.expenses.show', $expense) }}">{{ $expense->expense_category->name }}</a></td>
-                            <td>{{'DZD'  . ' ' .number_format($expense->amount, 0, ',') }}</td>
+                            <td><a href="{{ route('admin.expenses.show', $expense) }}">{{ $expense->description }}</a></td>
+                            <td> {{$expense->expense_category->name}} </td>
+                            <td>{{ 'DZD'  . ' ' . number_format($expense->amount, 0, '.', ',') }}</td>
+
                             <td>{{ Carbon\Carbon::createFromFormat('Y-m-d', $expense->entry_date)->format('d, M Y') }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">

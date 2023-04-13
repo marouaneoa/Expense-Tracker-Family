@@ -1,30 +1,28 @@
-# Laravel 8 - Expense application
-
-## Screenshots
-
-![preview img](/preview.png)
-
-![preview img](/preview2.png)
+# Expense Tracker Family Challenge
 
 ## Run Locally
 
 Clone the project
 
 ```bash
-  git clone https://github.com/abdulaziz-m5u/laravel-expense-app.git project-name
+  git clone https://github.com/marouaneoa/Expense-Tracker-Family.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd project-name
+  cd project-directory
 ```
 
--   Copy .env.example file to .env and edit database credentials there
+- Copy .env.example file to .env and **edit database credentials there**
+
+- Install Laravel files
 
 ```bash
     composer install
 ```
+
+- Generate APP_KEY
 
 ```bash
     php artisan key:generate
@@ -34,7 +32,9 @@ Go to the project directory
     php artisan migrate:fresh --seed
 ```
 
-#### Login
+## To test
 
--   email = admin@example.com
--   password = 123
+- Login to:
+
+- Email = admin@example.com
+- Password = 123
