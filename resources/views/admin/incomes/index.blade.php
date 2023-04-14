@@ -52,7 +52,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td class="text-center" colspan="12">No expense categories found.</td>
+                            <td class="text-center" colspan="12">No income found.</td>
                         </tr>
                     @endforelse
                     </tbody>
@@ -66,10 +66,14 @@
                         </tr>
                     </tfoot>
                 </table>
-                <p class="text-center"> Total Income : @php $user = Auth::user();
+                <p class="text-right"> Total Income : @php $user = Auth::user();
                 $totalIncome = $user->totalIncome();
                 echo $totalIncome;
-                @endphp DZD</p>
+                @endphp DA &nbsp;</p>
+                <p class="text-right ">Current Balance: @php $user = Auth::user();
+                    echo $user->balance();
+                    @endphp DA &nbsp;
+                </p>
             </div>
         </div>
    </div>

@@ -53,13 +53,41 @@ class User extends Authenticatable
     {
         return $this->hasMany(Income::class);
     }
+    public function expenses()
+    {
+    return $this->hasMany(Expense::class);
+    }
     public function totalIncome()
     {
         return $this->incomes()->sum('amount');
+    }
+    public function totalExpenses()
+    {
+        return $this->expenses()->sum('amount');
     }
     public function updateTotalIncome()
     {
         $this->total_income = $this->totalIncome();
         $this->save();
     }
+    public function updateTotalExpenses()
+    {
+        $this->total_expenses = $this->totalExpenses();
+        $this->save();
+    }
+    public function subusers()
+    {
+        return $this->hasMany(User::class, 'parent_user_id');
+    }
+    public function balance()
+{
+    $totalIncome = $this->total_income;
+    $totalExpenses = $this->total_expenses;
+
+    return $totalIncome - $totalExpenses;
+}
+public function incomeCategories()
+{
+    return $this->hasMany(IncomeCategory::class);
+}
 }

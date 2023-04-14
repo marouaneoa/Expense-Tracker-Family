@@ -28,7 +28,8 @@ class IncomeController extends Controller
      */
     public function create()
     {
-        $income_categories = IncomeCategory::get()->pluck('name', 'id');
+        $income_categories = IncomeCategory::where('user_id', auth()->user()->id)->pluck('name', 'id');
+
 
         return view('admin.incomes.create', compact('income_categories'));
     }
