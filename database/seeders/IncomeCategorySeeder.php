@@ -15,14 +15,19 @@ class IncomeCategorySeeder extends Seeder
      */
     public function run()
     {
-        $faker = Factory::create();
-        foreach(range(1, 5) as $id)
-        {
+
             IncomeCategory::create([
-                'name' => $faker->unique()->text(12),
+                'name' => 'Salary',
                 'user_id' => 1
             ]);
-        }
+            IncomeCategory::create([
+                'name' => 'Investments',
+                'user_id' => 1
+            ]);
+            IncomeCategory::create([
+                'name' => 'Gift',
+                'user_id' => 1
+            ]);
+     }
 
-    }
 }

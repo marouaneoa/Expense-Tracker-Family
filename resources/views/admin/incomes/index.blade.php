@@ -34,7 +34,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td><a href="{{ route('admin.incomes.show', $income) }}">{{ $income->description}}</a></td>
                             <td>{{$income->income_category->name }}</td>
-                            <td>{{ 'DZD'  . ' ' . number_format($income->amount, 0, ',', '.') }}</td>
+                            <td>{{  number_format($income->amount, 0, ',', '.') . ' DA' }}</td>
                             <td>{{ Carbon\Carbon::createFromFormat('Y-m-d', $income->entry_date)->format('d, M Y') }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
