@@ -22,6 +22,7 @@
                     <tr>
                         <th>No</th>
                         <th>Income Name</th>
+                        <th>Income Category</th>
                         <th>Amount</th>
                         <th>Date</th>
                         <th class="text-center" style="width: 30px;">Action</th>
@@ -31,7 +32,8 @@
                     @forelse($incomes as $income)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><a href="{{ route('admin.incomes.show', $income) }}">{{ $income->income_category->name }}</a></td>
+                            <td><a href="{{ route('admin.incomes.show', $income) }}">{{ $income->description}}</a></td>
+                            <td>{{$income->income_category->name }}</td>
                             <td>{{ 'DZD'  . ' ' . number_format($income->amount, 0, ',', '.') }}</td>
                             <td>{{ Carbon\Carbon::createFromFormat('Y-m-d', $income->entry_date)->format('d, M Y') }}</td>
                             <td>
@@ -64,6 +66,10 @@
                         </tr>
                     </tfoot>
                 </table>
+                <p class="text-center"> Total Income : @php $user = Auth::user();
+                $totalIncome = $user->totalIncome();
+                echo $totalIncome;
+                @endphp DZD</p>
             </div>
         </div>
    </div>

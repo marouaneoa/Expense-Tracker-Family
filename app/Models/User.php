@@ -49,4 +49,17 @@ class User extends Authenticatable
     public function currency(){
         return $this->belongsTo(Currency::class);
     }
+    public function incomes()
+    {
+        return $this->hasMany(Income::class);
+    }
+    public function totalIncome()
+    {
+        return $this->incomes()->sum('amount');
+    }
+    public function updateTotalIncome()
+    {
+        $this->total_income = $this->totalIncome();
+        $this->save();
+    }
 }
