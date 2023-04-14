@@ -100,13 +100,14 @@ public function globalBalance()
 
     return $balance;
 }
+public function transfersSent()
+{
+    return $this->hasMany(Transfer::class, 'sender_id');
+}
 
-    public function getBalanceAttribute()
-    {
-        $totalIncome = $this->incomes->sum('amount');
-        $totalExpenses = $this->expenses->sum('amount');
-        $subUsersBalance = $this->subUsers->sum('balance');
+public function transfersReceived()
+{
+    return $this->hasMany(Transfer::class, 'receiver_id');
+}
 
-        return $totalIncome - $totalExpenses + $subUsersBalance;
-    }
 }

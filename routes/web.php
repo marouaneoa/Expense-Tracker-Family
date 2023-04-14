@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TransferController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,8 +29,11 @@ Route::group(['middleware' => 'isAdmin','prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('income_categories', \App\Http\Controllers\Admin\IncomeCategoryController::class);
     Route::resource('expenses', \App\Http\Controllers\Admin\ExpenseController::class);
     Route::resource('incomes', \App\Http\Controllers\Admin\IncomeController::class);
-    Route::get('/transfers/create', [TransferController::class, 'create'])->name('transfers.create');
+    
 });
+Route::post('/admin/transfers', [\App\Http\Controllers\Admin\TransferController::class, 'store'])->name('admin.transfer.store');
+
+Route::get('/admin/transfers/create', [TransferController::class, 'create'])->name('admin.transfers.create');
 
 Auth::routes();
 
