@@ -15,14 +15,19 @@ class ExpenseCategorySeeder extends Seeder
      */
     public function run()
     {
-        $faker = Factory::create();
-        foreach(range(1, 5) as $id)
-        {
+
             ExpenseCategory::create([
-                'name' => $faker->unique()->text(12),
+                'name' => 'House Stuffs',
                 'user_id' => 1
             ]);
-        }
+            ExpenseCategory::create([
+                'name' => 'Clothes',
+                'user_id' => 1
+            ]);
+            ExpenseCategory::create([
+                'name' => 'Telephone',
+                'user_id' => 1
+            ]);
 
     }
 }

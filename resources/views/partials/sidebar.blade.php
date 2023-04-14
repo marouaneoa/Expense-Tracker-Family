@@ -5,9 +5,6 @@
                 <div class="sidebar-brand-text mx-3">{{ __('Homepage') }}</div>
             </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
 
             <!-- Divider -->
             <hr class="sidebar-divider">

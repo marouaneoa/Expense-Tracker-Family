@@ -34,7 +34,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td><a href="{{ route('admin.expenses.show', $expense) }}">{{ $expense->description }}</a></td>
                             <td> {{$expense->expense_category->name}} </td>
-                            <td>{{ 'DZD'  . ' ' . number_format($expense->amount, 0, '.', ',') }}</td>
+                            <td>{{number_format($expense->amount, 0, '.', ',') . ' DA'}}</td>
 
                             <td>{{ Carbon\Carbon::createFromFormat('Y-m-d', $expense->entry_date)->format('d, M Y') }}</td>
                             <td>
