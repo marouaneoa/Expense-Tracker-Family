@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('register');
+    return redirect()->route('login');
 });
 
 Route::group(['middleware' => 'isAdmin','prefix' => 'admin', 'as' => 'admin.'], function() {
@@ -28,6 +28,7 @@ Route::group(['middleware' => 'isAdmin','prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('income_categories', \App\Http\Controllers\Admin\IncomeCategoryController::class);
     Route::resource('expenses', \App\Http\Controllers\Admin\ExpenseController::class);
     Route::resource('incomes', \App\Http\Controllers\Admin\IncomeController::class);
+    Route::get('/transfers/create', [TransferController::class, 'create'])->name('transfers.create');
 });
 
 Auth::routes();
@@ -35,3 +36,4 @@ Auth::routes();
 Route::get('/home', function() {
     return view('home');
 })->name('home');
+

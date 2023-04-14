@@ -90,4 +90,23 @@ public function incomeCategories()
 {
     return $this->hasMany(IncomeCategory::class);
 }
+public function globalBalance()
+{
+    $balance = $this->balance();
+
+    foreach ($this->subUsers as $subUser) {
+        $balance += $subUser->balance();
+    }
+
+    return $balance;
+}
+
+    public function getBalanceAttribute()
+    {
+        $totalIncome = $this->incomes->sum('amount');
+        $totalExpenses = $this->expenses->sum('amount');
+        $subUsersBalance = $this->subUsers->sum('balance');
+
+        return $totalIncome - $totalExpenses + $subUsersBalance;
+    }
 }

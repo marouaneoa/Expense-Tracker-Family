@@ -62,6 +62,7 @@
 
                         </tbody>
                     </table>
+                    <p class="text-right">Total Balance: {{auth()->user()->globalBalance()}} DA</p>
                 </div>
             </div>
             <div class="card-footer">
