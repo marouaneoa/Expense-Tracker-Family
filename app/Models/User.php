@@ -90,4 +90,24 @@ public function incomeCategories()
 {
     return $this->hasMany(IncomeCategory::class);
 }
+public function globalBalance()
+{
+    $balance = $this->balance();
+
+    foreach ($this->subUsers as $subUser) {
+        $balance += $subUser->balance();
+    }
+
+    return $balance;
+}
+public function transfersSent()
+{
+    return $this->hasMany(Transfer::class, 'sender_id');
+}
+
+public function transfersReceived()
+{
+    return $this->hasMany(Transfer::class, 'receiver_id');
+}
+
 }
