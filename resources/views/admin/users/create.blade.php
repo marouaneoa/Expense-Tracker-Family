@@ -5,7 +5,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">{{ __('create user') }}</h1>
+        <h1 class="h3 mb-0 text-gray-800">{{ __('Create Subuser') }}</h1>
         <a href="{{ route('admin.users.index') }}" class="btn btn-primary btn-sm shadow-sm">{{ __('Go Back') }}</a>
     </div>
 
@@ -36,19 +36,11 @@
                         <label for="password">{{ __('Password') }}</label>
                         <input type="text" class="form-control" id="password" placeholder="{{ __('Password') }}" name="password" value="{{ old('password') }}" required />
                     </div>
-                    <div class="form-group">
-                        <label for="roles">{{ __('Role') }}</label>
-                        <select name="roles[]" id="roles" class="form-control select2" multiple="multiple" required>
-                            @foreach($roles as $id => $roles)
-                                <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || isset($role) && $role->roles->contains($id)) ? 'selected' : '' }}>{{ $roles }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    <input type="hidden" name="parent_user_id" value="{{ Auth::user()->id }}">
                     <button type="submit" class="btn btn-primary btn-block">{{ __('Save') }}</button>
                 </form>
             </div>
         </div>
-    
 
     <!-- Content Row -->
 

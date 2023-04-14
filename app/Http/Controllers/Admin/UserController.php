@@ -43,7 +43,9 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $user = User::create($request->validated() + ['password' => bcrypt($request->password)]);
-        $user->roles()->sync($request->input('roles'));
+        $user->roles()->sync([2]);
+        $user->parent_user_id = auth()->user()->id;
+        $user->save();
 
         return redirect()->route('admin.users.index')->with('message', "Successfully Created !");   
     }
@@ -88,4 +90,5 @@ class UserController extends Controller
 
         return redirect()->route('admin.users.index')->with('message',  "Successfully deleted !");
     }
+    
 }

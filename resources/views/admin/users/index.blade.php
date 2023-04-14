@@ -28,39 +28,38 @@
                                 <th>No</th>
                                 <th>{{ __('Name') }}</th>
                                 <th>{{ __('Email') }}</th>
-                                <th>{{ __('Roles') }}</th>
+                                <th>{{ __('Balance')}}</th>
                                 <th>{{ __('Action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($users as $user)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>
-                                    @foreach($user->roles as $key => $role)
-                                        <span class="badge badge-info">{{ $role->title }}</span>
-                                    @endforeach
-                                </td>
-                                <td>
-                                    <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-info">
-                                        <i class="fa fa-pencil-alt"></i>
-                                    </a>
-                                    <form onclick="return alert('are you sure ? ')" class="d-inline" action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="7" class="text-center">{{ __('Data Empty') }}</td>
-                            </tr>
-                            @endforelse
+                            @forelse(auth()->user()->subusers as $user)
+    <tr>
+        <td>{{ $loop->iteration }}</td>
+        <td>{{ $user->name }}</td>
+        <td>{{ $user->email }}</td>
+        <td>
+            {{$user->balance()}} DA
+        </td>
+        <td>
+            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-info">
+                <i class="fa fa-pencil-alt"></i>
+            </a>
+            <form onclick="return alert('are you sure ? ')" class="d-inline" action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
+                @csrf
+                @method('delete')
+                <button class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </form>
+        </td>
+    </tr>
+@empty
+    <tr>
+        <td colspan="7" class="text-center">{{ __('Data Empty') }}</td>
+    </tr>
+@endforelse
+
                         </tbody>
                     </table>
                 </div>

@@ -37,7 +37,18 @@ class Expense extends Model
     {
         return $this->belongsTo(ExpenseCategory::class, 'expense_category_id');
     }
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::saved(function ($expense) {
+            $expense->user->updateTotalExpenses();
+        });
+
+        static::deleted(function ($expense) {
+            $expense->user->updateTotalExpenses();
+        });
+    }
 
     
     public function user()

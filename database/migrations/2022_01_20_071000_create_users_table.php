@@ -20,6 +20,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->double('total_income')->default(0);
+            $table->double('total_expenses')->default(0);
+            $table->unsignedBigInteger('parent_user_id')->nullable();
+            $table->foreign('parent_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
