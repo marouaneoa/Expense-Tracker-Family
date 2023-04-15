@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group">
                         <label for="password">{{ __('Password') }}</label>
-                        <input type="text" class="form-control" id="password" placeholder="{{ __('Password') }}" name="password" value="{{ old('password',  $user->password) }}" />
+                        <input type="text" class="form-control" id="password" placeholder="{{ __('Password') }}" name="password"  />
                     <button type="submit" class="btn btn-primary btn-block">{{ __('Save')}}</button>
                 </form>
             </div>
