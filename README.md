@@ -19,7 +19,7 @@ Go to the project directory
 - Install Laravel files
 
 ```bash
-    composer install
+    composer install // or composer update
 ```
 
 - Generate APP_KEY
@@ -37,4 +37,4 @@ Go to the project directory
 - Login to:
 
 - Email = admin@example.com
-- Password = 123
+- Password = admin
