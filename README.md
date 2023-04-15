@@ -19,7 +19,7 @@ Go to the project directory
 - Install Laravel files
 
 ```bash
-    composer install // or composer update
+    composer update
 ```
 
 - Generate APP_KEY
