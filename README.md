@@ -32,7 +32,10 @@ Go to the project directory
 ```bash
     php artisan migrate:fresh --seed
 ```
-
+- Then:
+```bash
+    php artisan serve
+```
 ## To test
 
 - Login to:
