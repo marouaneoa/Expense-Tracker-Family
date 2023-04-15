@@ -38,7 +38,7 @@ public function store(Request $request)
     $sender = Auth::user();
     $receiver = User::find($request->receiver_id);
     
-    $expenseCategory = ExpenseCategory::create([
+    $expenseCategory = ExpenseCategory::firstOrCreate([
         'name' => 'Transfers',
         'user_id' => $sender->id,
     ]);
@@ -52,8 +52,8 @@ public function store(Request $request)
     $expense->entry_date = $formattedDate;
     $expense->description = 'Transfer to ' . $receiver->name;
     $expense->save();
-
-    $incomeCategory = IncomeCategory::create([
+    
+    $incomeCategory = IncomeCategory::firstOrCreate([
         'name' => 'Transfers',
         'user_id' => $receiver->id,
     ]);

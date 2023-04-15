@@ -56,7 +56,7 @@
     </tr>
 @empty
     <tr>
-        <td colspan="7" class="text-center">{{ __('Data Empty') }}</td>
+        <td colspan="7" class="text-center">{{ __('No Subusers Found!') }}</td>
     </tr>
 @endforelse
 
