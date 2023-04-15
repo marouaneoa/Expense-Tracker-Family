@@ -14,7 +14,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">{{ __('Users') }}</h1>
+        <h1 class="h3 mb-0 text-gray-800">{{ __('Subusers') }}</h1>
             <a href="{{ route('admin.users.create') }}" class="btn btn-primary btn-sm shadow-sm">{{ __('create new')}} <i class="fa fa-plus"> </i></a>
     </div>
 
