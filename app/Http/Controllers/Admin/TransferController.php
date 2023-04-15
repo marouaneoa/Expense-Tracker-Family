@@ -39,7 +39,7 @@ public function store(Request $request)
     $receiver = User::find($request->receiver_id);
     
     $expenseCategory = ExpenseCategory::create([
-        'name' => 'Transfer to ' . $receiver->name,
+        'name' => 'Transfers',
         'user_id' => $sender->id,
     ]);
     
@@ -54,7 +54,7 @@ public function store(Request $request)
     $expense->save();
 
     $incomeCategory = IncomeCategory::create([
-        'name' => 'Transfer from ' . $sender->name,
+        'name' => 'Transfers',
         'user_id' => $receiver->id,
     ]);
 
