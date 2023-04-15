@@ -43,7 +43,7 @@ Go to the project directory
 - Email = admin@example.com
 - Password = admin
 
-**In Case you face problems with ```composer update``` check **php**.ini files and uncomment the needed extensions such as**
+**In Case you face problems with ```composer update``` check ```php.ini``` files and uncomment the needed extensions such as**
 
 ```
 extension=pdo_mysql
