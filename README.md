@@ -27,6 +27,7 @@ Go to the project directory
 ```bash
     php artisan key:generate
 ```
+- Create the database tables (with seeding)
 
 ```bash
     php artisan migrate:fresh --seed
