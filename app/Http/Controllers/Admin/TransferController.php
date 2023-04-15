@@ -16,13 +16,22 @@ use Illuminate\Support\Facades\Auth;
 
 class TransferController extends Controller
 {
+    public function index()
+{
+    $transfers = Transfer::where('sender_id', auth()->id())
+                    ->orWhere('receiver_id', auth()->id())
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(5);
+    return view('admin.transfers.index', compact('transfers'));
+}
 public function create()
 {
-    // dd('test');
     $subusers = User::where('parent_user_id', auth()->id())->get();
-    // return 'test';
-    return view('admin.transfers.create', compact('subusers'));
+    $parentUser = User::find(auth()->user()->parent_user_id); // Get the parent user
+    return view('admin.transfers.create', compact('subusers', 'parentUser'));
 }
+
+
 
 public function store(Request $request)
 {
@@ -58,7 +67,15 @@ public function store(Request $request)
     $income->description = 'Transfer from ' . $sender->name;
     $income->save();
 
-    return redirect()->route('admin.transfers.create')->with('success', 'Transfer successful!');
+    $transfer = new Transfer();
+    $transfer->sender_id = $sender->id;
+    $transfer->receiver_id = $receiver->id;
+    $transfer->amount = $request->amount;
+    $transfer->description = 'Transfer from ' . $sender->name . ' to ' . $receiver->name ;
+    $transfer->save();
+
+
+    return redirect()->route('admin.transfers.index')->with('success', 'Transfer successful!');
 }
 
 
