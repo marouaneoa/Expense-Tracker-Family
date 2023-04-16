@@ -65,6 +65,8 @@ Go to the project directory
 - User can see the global balance
   - The user will be able to see the global balance in the subusers section.
 
+## Possible Errors
+
 **In Case you never used Laravel in your machine, you might face problems with ```composer update``` or when migrating. To solve that check ```php.ini``` file and uncomment the needed extensions such as**
 
 ```ini
